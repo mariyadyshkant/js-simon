@@ -4,12 +4,14 @@ const startButton = document.querySelector("#start-button");
 const countDown = document.querySelector("#countdown");
 const gameInstructions = document.querySelector("#instructions");
 let numberList = document.querySelector("#numbers-list");
-let userAnswers = document.getElementById("answers-form");
+let answersForm = document.getElementById("answers-form");
+const confirmButton = document.querySelector("#confirm-button");
+const userAnswers = document.querySelectorAll("input");
 
 // Il gioco inizia quando clicco su "Inizia"
 // Mi serve un eventListener per far partire il gioco
 
-startButton.addEventListener("click", (_simon_says) => {
+startButton.addEventListener("click", (_event) => {
     // Al click devono scomparire le istruzioni e il pulsante "Inizia"
     gameInstructions.classList.add("d-none");
     startButton.classList.add("d-none");
@@ -40,8 +42,9 @@ startButton.addEventListener("click", (_simon_says) => {
             clearInterval(timerId);
             countDown.classList.add("d-none");
             numberList.classList.add("d-none");
-            userAnswers.classList.remove("d-none");
-            console.log(userAnswers.input)
+            answersForm.classList.remove("d-none");
+            confirmButton.classList.remove("d-none");
+
         } else {
             // Altrimenti continuo a fare il conto alla rovescia, andando in decremento con i numeri del timerValue
             timerValue = --timerValue;
@@ -53,5 +56,26 @@ startButton.addEventListener("click", (_simon_says) => {
     }, 1000);
 
     // Una volta inseriti i numeri, dobbiamo fare un check con quelli precedentemente visualizzati e contare quanti numeri sono stati indovinati - e lo dobbiamo visualizzare in pagina
-    let user
+
+    confirmButton.addEventListener("click", (_event) => {
+        // Trasformo la nodelist userAnswers che mi raccoglie tutti gli input inseriti in un array ccosì da poter utilizzare tutti i metodi degli array
+        const userAnswersArray = Array.from(userAnswers, input => input.value);
+        console.log(userAnswersArray);
+        // Eseguo un ciclo for per confrontare i numeri inseriti dal giocatore con quelli generati casualmente - quindi confronto gli elementi dei due array
+        let guessedNumbers = [];
+        for (i = 0; i < listRandomNumbers.length; i++) {
+            const thisUserNumber = Number(userAnswersArray[i]);
+            if (listRandomNumbers.includes(thisUserNumber)) {
+                guessedNumbers.push(thisUserNumber);
+            }
+
+        }
+        console.log(guessedNumbers);
+        console.log(guessedNumbers.length);
+
+
+
+
+
+    });
 }); 
