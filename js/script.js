@@ -9,6 +9,7 @@ const confirmButton = document.querySelector("#confirm-button");
 const userAnswers = document.querySelectorAll("input");
 let resultMessage = document.getElementById("message");
 
+//! Potrei aggiungere una frase sotto al pulsante inizia che avvisa dei 30 secondi
 // Il gioco inizia quando clicco su "Inizia"
 // Mi serve un eventListener per far partire il gioco
 
@@ -28,6 +29,7 @@ startButton.addEventListener("click", (_event) => {
         console.log(listRandomNumbers);
         numberList.innerHTML += `<li>${randomNumber}</li>`;
         // console.log(numberList);
+        //! Vengono generati numeri troppo vicini tra loro, quindi facilmente memorizzabili (quindi probabilmente bisognerebbe aumentare il range) e a volte anche due uguali (questo grave!)
     }
     // Mi creo una variabile che mi mostrerà i secondi ad ogni ripetizione
     let timerValue = 2;
