@@ -7,6 +7,7 @@ let numberList = document.querySelector("#numbers-list");
 let answersForm = document.getElementById("answers-form");
 const confirmButton = document.querySelector("#confirm-button");
 const userAnswers = document.querySelectorAll("input");
+let resultMessage = document.getElementById("message");
 
 // Il gioco inizia quando clicco su "Inizia"
 // Mi serve un eventListener per far partire il gioco
@@ -68,11 +69,15 @@ startButton.addEventListener("click", (_event) => {
             if (listRandomNumbers.includes(thisUserNumber)) {
                 guessedNumbers.push(thisUserNumber);
             }
-
         }
-        console.log(guessedNumbers);
-        console.log(guessedNumbers.length);
+        // console.log(guessedNumbers);
+        // console.log(guessedNumbers.length);
 
+        // Faccio comparire il messaggio con il punteggio
+        let stringNumbers = guessedNumbers.join(" , ");
+        resultMessage.innerText =
+            `Hai indovinato ${guessedNumbers.length} numeri!
+            ${stringNumbers}`
 
 
 
