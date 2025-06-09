@@ -4,7 +4,7 @@ const startButton = document.querySelector("#start-button");
 const countDown = document.querySelector("#countdown");
 const gameInstructions = document.querySelector("#instructions");
 let numberList = document.querySelector("#numbers-list");
-
+let userAnswers = document.getElementById("answers-form");
 
 // Il gioco inizia quando clicco su "Inizia"
 // Mi serve un eventListener per far partire il gioco
@@ -27,7 +27,7 @@ startButton.addEventListener("click", (_simon_says) => {
         // console.log(numberList);
     }
     // Mi creo una variabile che mi mostrerà i secondi ad ogni ripetizione
-    let timerValue = 30;
+    let timerValue = 2;
     countDown.innerText = timerValue;
     console.log(timerValue);
     console.log(countDown.innerText);
@@ -36,11 +36,12 @@ startButton.addEventListener("click", (_simon_says) => {
     // Le ripetizioni si dovranno fermare allo 0 quindi creo una costante che contenga il mio setInterval
     const timerId = setInterval(() => {
         if (timerValue === 0) {
-            // quando il countdown arriva allo 0, devo fermare le ripetizioni e far sparire i numeri mostrati e il countdown stesso
+            // quando il countdown arriva allo 0, devo fermare le ripetizioni e far sparire i numeri mostrati e il countdown stesso - e far apparire form e bottone "conferma"
             clearInterval(timerId);
             countDown.classList.add("d-none");
             numberList.classList.add("d-none");
-
+            userAnswers.classList.remove("d-none");
+            console.log(userAnswers.input)
         } else {
             // Altrimenti continuo a fare il conto alla rovescia, andando in decremento con i numeri del timerValue
             timerValue = --timerValue;
@@ -50,7 +51,7 @@ startButton.addEventListener("click", (_simon_says) => {
 
         }
     }, 1000);
-    // Adesso devo far apparire il form e permettere al giocatore di scrivere i suoi numeri, contemporaneamente appare il bottone "Conferma"
 
     // Una volta inseriti i numeri, dobbiamo fare un check con quelli precedentemente visualizzati e contare quanti numeri sono stati indovinati - e lo dobbiamo visualizzare in pagina
+    let user
 }); 
