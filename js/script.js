@@ -25,7 +25,11 @@ startButton.addEventListener("click", (_event) => {
     let listRandomNumbers = [];
     for (i = 0; i < 5; i++) {
         const randomNumber = Math.floor(Math.random() * 50) + 1;
-        listRandomNumbers.push(randomNumber);
+        // if per evitare la ripetizione dei numeri
+        if (!listRandomNumbers.includes(randomNumber)) {
+            listRandomNumbers.push(randomNumber);
+        }
+
         console.log(listRandomNumbers);
         numberList.innerHTML += `<li>${randomNumber}</li>`;
         // console.log(numberList);
@@ -50,7 +54,7 @@ startButton.addEventListener("click", (_event) => {
 
         } else {
             // Altrimenti continuo a fare il conto alla rovescia, andando in decremento con i numeri del timerValue
-            timerValue = --timerValue;
+            timerValue--;
             // Riassegno questo valore al countDown.innerText
             countDown.innerText = timerValue;
             // console.log(timerValue);
