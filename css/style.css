@@ -12,6 +12,13 @@
 	font-size: 3rem;
 }
 
+li {
+	border: 2px solid green;
+	padding: 1.25rem 2rem;
+	border-radius: 2rem;
+	background-color: rgba(0, 128, 0, 12%);
+}
+
 input {
 	width: 80px !important;
 }
